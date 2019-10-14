@@ -1,0 +1,19 @@
+fieldset{
+	padding: 40px;
+	border: 2px solid red;
+	margin: 30px;
+	color: red;
+}
+body{
+	background-color: black;
+}
+.btn{
+	color: black;
+	border: 2px solid red;
+	font-weight:bold;
+	cursor:pointer;
+	border-radius: 15px;
+	display:inline-block;
+	font-size:13px;
+	background-image: linear-gradient(black, gray, red, gray, black);
+}
