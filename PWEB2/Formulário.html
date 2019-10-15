@@ -13,7 +13,7 @@
 					return false;
 				}
 
-				if (document.getElementById('email').value=="" || document.getElementById('email').indexOf('@')|| document.getElementById('email').indexOf('.')) {
+				if (document.getElementById('email').value=="" || document.getElementById('email').indexOf('@') == -1 || document.getElementById('email').indexOf('.') == -1) {
 					alert("Preencha o campo email corretamente")
 					return false;
 				}
