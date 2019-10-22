@@ -8,35 +8,69 @@
 
 		<script>
 			function validar() { 
-				if (document.getElementById("nome").value =="" || document.getElementById("nome").value.length <3){
-					alert("Preencha o campo 'Nome' corretamente")
+				var erroNome = document.getElementById("erroNome");
+				var erroEmail = document.getElementById("erroEmail");
+				var erroSenha = document.getElementById("erroSenha");
+				var erroRadio = document.getElementById("erroRadio");
+				var erroCheck = document.getElementById("erroCheck");
+
+				if (document.getElementById("nome").value == "" ||
+					document.getElementById("nome").value.length <3){
+
+					erroNome.innerHTML = 'Preencha o nome corretamente'
 					return false;
 				}
+				else{
+					erroNome.innerHTML = ''
+				}
 
-				if (document.getElementById('email').value=="" || document.getElementById('email').indexOf('@') == -1 || document.getElementById('email').indexOf('.') == -1) {
-					alert("Preencha o campo email corretamente")
+				if (document.getElementById('email').value=="" || 
+					document.getElementById('email').indexOf('@') == -1 || 
+					document.getElementById('email').indexOf('.') == -1) {
+
+					erroEmail.innerHTML = "Preencha o campo email corretamente"
 					return false;
+				}
+				else{
+					erroEmail.innerHTML = ''
 				}
 
 				if (document.getElementById('senha1').value != document.getElementById('senha2').value) {
-					alert('senhas não correspondem')
+					erroSenha.innerHTML = 'senhas não correspondem'
 					return false;
+				}
+				else{
+					erroSenha.innerHTML = ''
+				}
+				if (document.getElementById("senha1").length == "" || document.getElementById("senha2").length == "") {
+					erroSenha.innerHTML = "Senha não pode ficar vazia"
+					return false;
+				}
+				else{
+					erroSenha.innerHTML = ''
 				}
 				if (document.getElementById("radio1").checked == false && 
 					document.getElementById("radio2").checked == false &&
 					document.getElementById("radio3").checked == false) {
 
-					alert("É necessário marcar uma das opções de turma");
+					erroRadio.innerHTML = "É necessário marcar uma das opções de turma"
 					return false;
+				}
+				else{
+					erroRadio.innerHTML = ''
 				}
 				if (document.getElementById('check1').checked == false &&
 					document.getElementById('check2').checked == false &&
 					document.getElementById('check3').checked == false &&
 					document.getElementById('check4').checked == false) {
 
-					alert("Selecione ao menos uma das opções")
+					erroCheck.innerHTML = "Selecione ao menos uma das opções"
 					return false;
 				}
+				else{
+					erroCheck.innerHTML = ''
+				}
+				return true;
 
 			}
 			/*function limpar(document.getElementById('nome').value > 0 || 
@@ -72,10 +106,12 @@
 				<div class="form-group">
 					<label for="nome">Nome</label>
 					<input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome" >
+					<small id="erroNome"></small>
 				</div>
 				<div class="form-group">
 					<label for="email">Endereço de email</label>
 					<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digite seu email" >
+					<small id="erroEmail"></small>
 				</div>
 				<div class="form-group">
 					<label for="senha1">Senha</label>
@@ -84,6 +120,7 @@
 				<div class="form-group">
 					<label for="senha2">Confirmar senha</label>
 					<input type="password" class="form-control" name="senha2" id="senha2" placeholder="Digite sua senha novamente" >
+					<small id="erroSenha"></small>
 				</div>
 				<h4>Módulo</h4>
 				<div class="form-group form-radio">
@@ -95,6 +132,7 @@
 				
 					<input class="form-radio-input" type="radio" name="radios" id="radios3" value="option1">
 					<label class="form-radio-label" for="radio3">Módulo III</label><br>
+					<small id="erroRadio"></small>
 				</div>
 				<h4>Disciplinas</h4>
 				<div class="form-group form-check">
@@ -113,7 +151,8 @@
 					<input type="checkbox" class="form-check-input" id="check4">
 					<label class="form-check-label" for="exampleCheck1">Programação WEB I</label>
 				</div>
-				<button type="submit" class="btn" onclick="validar()">Enviar</button>
+				<small id="erroCheck"></small>
+				<button type="submit" class="btn" onclick="return validar()">Enviar</button>
 				<button type="reset" class="btn">Limpar</button>
 			</form>
 		</fieldset>
